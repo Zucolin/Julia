@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor 💕</title>
+    <!-- Fontes do Google: Playfair Display e Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+    <!-- Efeitos de luz de fundo -->
+    <div class="decor-circle circle-1"></div>
+    <div class="decor-circle circle-2"></div>
+    <div class="decor-circle circle-3"></div>
+
+    <div class="page-wrapper">
+        <!-- Barra de navegação elegante no topo para voltar -->
+        <nav class="top-nav">
+            <a href="index.html" class="back-pill-btn">
+                <span class="back-pill-arrow">←</span>
+                <span>Voltar para a Princesa 👑</span>
+            </a>
+        </nav>
+
+        <!-- Título ao centro superior limpo e majestoso -->
+        <header class="header">
+            <div class="tiara-badge">💖 Nossa História</div>
+            <h1 class="main-title">Nosso Amor</h1>
+            <p class="subtitle">✧ O menino mais sortudo e a princesa mais perfeita ✧</p>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">💕</span>
+                <span class="divider-line"></span>
+            </div>
+        </header>
+
+        <!-- Conteúdo central: Imagem do casal na esquerda, Data e Declaração na direita -->
+        <main class="content-container">
+            <!-- Foto do casal na esquerda central -->
+            <section class="left-section">
+                <div class="image-card">
+                    <div class="image-inner">
+                        <!-- Usa casal.jpeg se existir, ou julia.jpeg como padrão -->
+                        <img src="casal.jpeg" onerror="this.onerror=null; this.src='julia.jpeg';" alt="Foto do Casal" class="profile-image">
+                    </div>
+                    <div class="photo-caption">✨ Para Todo o Sempre ✨</div>
+                </div>
+            </section>
+
+            <!-- Data, Contador e Mensagem na direita central -->
+            <section class="right-section">
+                <!-- Card de Data e Contador do Amor -->
+                <div class="card date-card">
+                    <div class="card-header">
+                        <span class="tag-pill">🗓️ Nossa Data Especial</span>
+                    </div>
+
+                    <div class="date-highlight">
+                        <span class="calendar-icon">💍</span>
+                        <div class="date-details">
+                            <span class="date-label">Oficialmente Juntos Desde</span>
+                            <span class="date-value" id="displayDate">12 de Agosto de 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Contador em Tempo Real -->
+                    <div class="counter-card">
+                        <span class="date-label">Tempo Juntos Apaixonados:</span>
+                        <div class="counter-grid">
+                            <div class="counter-box">
+                                <span class="counter-number" id="countDays">0</span>
+                                <span class="counter-label">Dias</span>
+                            </div>
+                            <div class="counter-box">
+                                <span class="counter-number" id="countHours">0</span>
+                                <span class="counter-label">Horas</span>
+                            </div>
+                            <div class="counter-box">
+                                <span class="counter-number" id="countMinutes">0</span>
+                                <span class="counter-label">Min</span>
+                            </div>
+                            <div class="counter-box">
+                                <span class="counter-number" id="countSeconds">0</span>
+                                <span class="counter-label">Seg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card de Mensagem do Casal -->
+                <div class="card description-card">
+                    <div class="card-header">
+                        <span class="tag-pill">💌 Meu Amor Por Você</span>
+                    </div>
+                    <p class="description-text">
+                        Você é a razão do meu sorriso, é você com quero casar e viver para sempre. Cada segundo ao seu lado é um momento inesquecível 💖
+                    </p>
+                    <p class="love-message">
+                        "Dou minha vida por você" 🌹✨
+                    </p>
+                </div>
+
+                <!-- Botão de retorno na base do conteúdo -->
+                <a href="index.html" class="nav-main-btn btn-secondary">
+                    <span>👑 Voltar para a Página Principal</span>
+                    <span class="btn-arrow">➔</span>
+                </a>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Feito com amor 💕 para nós dois</p>
+        </footer>
+    </div>
+
+    <!-- Script do Contador em Tempo Real -->
+    <script>
+        // CONFIGURAÇÃO DA DATA DE INÍCIO (Ano, Mês base zero: 0=Jan, 9=Out, Dia, Hora, Minuto)
+        // 12 de Setembro de 2026 às 00:00:00
+        const dataInicio = new Date(2026, 7, 12, 0, 0, 0);
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferencaMs = agora - dataInicio;
+
+            if (diferencaMs < 0) {
+                document.getElementById('countDays').textContent = '0';
+                document.getElementById('countHours').textContent = '0';
+                document.getElementById('countMinutes').textContent = '0';
+                document.getElementById('countSeconds').textContent = '0';
+                return;
+            }
+
+            const totalSegundos = Math.floor(diferencaMs / 1000);
+            const dias = Math.floor(totalSegundos / (3600 * 24));
+            const horas = Math.floor((totalSegundos % (3600 * 24)) / 3600);
+            const minutos = Math.floor((totalSegundos % 3600) / 60);
+            const segundos = totalSegundos % 60;
+
+            document.getElementById('countDays').textContent = dias;
+            document.getElementById('countHours').textContent = horas;
+            document.getElementById('countMinutes').textContent = minutos;
+            document.getElementById('countSeconds').textContent = segundos;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
